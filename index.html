@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A live weather dashboard using asynchronous JavaScript and the Open-Meteo REST API.">
+  <title>Weatherly | Live Weather Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <main class="dashboard">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Weatherly home"><span class="brand-icon" aria-hidden="true">☀</span> weatherly</a>
+      <span class="api-label"><span class="live-dot" aria-hidden="true"></span> LIVE WEATHER</span>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">YOUR DAILY FORECAST</p>
+      <h1>Weather, at a glance.</h1>
+      <p class="intro-copy">Find current conditions and plan your day with confidence.</p>
+    </section>
+
+    <form id="search-form" class="search-form" role="search">
+      <label class="visually-hidden" for="city-input">Search city</label>
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input id="city-input" name="city" type="search" placeholder="Search for a city..." value="Indore" autocomplete="off" required>
+      <button id="search-button" type="submit">Search <span aria-hidden="true">→</span></button>
+    </form>
+
+    <p id="status" class="status" role="status" aria-live="polite">Search for a city to see its weather.</p>
+
+    <section id="weather-content" class="weather-content" aria-label="Weather results" hidden>
+      <article class="current-card">
+        <div class="current-top">
+          <div>
+            <p class="card-kicker">CURRENT WEATHER</p>
+            <h2 id="location-name">Indore, India</h2>
+            <p id="local-time" class="muted"></p>
+          </div>
+          <div id="weather-icon" class="weather-icon" aria-hidden="true">☀️</div>
+        </div>
+        <div class="temperature-row">
+          <p id="temperature" class="temperature">--°</p>
+          <div>
+            <p id="condition" class="condition">Loading conditions</p>
+            <p id="feels-like" class="muted">Feels like --°</p>
+          </div>
+        </div>
+        <p id="weather-summary" class="weather-summary">Current conditions for your selected city.</p>
+      </article>
+
+      <div class="metrics-grid">
+        <article class="metric-card"><span class="metric-icon" aria-hidden="true">💧</span><span class="metric-label">Humidity</span><strong id="humidity">--%</strong><small>Relative humidity</small></article>
+        <article class="metric-card"><span class="metric-icon" aria-hidden="true">🌬️</span><span class="metric-label">Wind speed</span><strong id="wind-speed">-- km/h</strong><small>Near-surface wind</small></article>
+        <article class="metric-card"><span class="metric-icon" aria-hidden="true">🌡️</span><span class="metric-label">Feels like</span><strong id="metric-feels-like">--°</strong><small>Apparent temperature</small></article>
+        <article class="metric-card"><span class="metric-icon" aria-hidden="true">☁️</span><span class="metric-label">Cloud cover</span><strong id="cloud-cover">--%</strong><small>Sky coverage</small></article>
+      </div>
+
+      <section class="forecast-section" aria-labelledby="forecast-heading">
+        <div class="section-heading"><div><p class="card-kicker">NEXT HOURS</p><h2 id="forecast-heading">Hourly outlook</h2></div><span class="muted">Next 6 hours</span></div>
+        <div id="hourly-forecast" class="hourly-grid"></div>
+      </section>
+
+      <p class="source-note">Weather data provided by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>. Forecasts are estimates and may change.</p>
+    </section>
+
+    <footer class="footer"><span>Built with HTML, CSS & JavaScript</span><span>© 2026 Sneha</span></footer>
+  </main>
+</body>
+</html>
